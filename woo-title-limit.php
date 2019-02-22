@@ -87,6 +87,11 @@ class woo_title_limit{
             $this->set_option('wtl_count_category', 100);
             $this->set_option('wtl_count_product', 100);
             $this->set_option('wtl_count_home', 100);
+            $this->set_option('wtl_checkbox_etc_shop', 0);
+            $this->set_option('wtl_checkbox_etc_category', 0);
+            $this->set_option('wtl_checkbox_etc_product', 0);
+            $this->set_option('wtl_checkbox_widgets', 0);
+            $this->set_option('wtl_checkbox_wordcutter', 0);
     }
     /**
      *
@@ -99,8 +104,10 @@ class woo_title_limit{
      */
     public function wtl_scripts(){
         $options = $this->get_wtl_options();
-        if(isset($options) && $options['wtl_checkbox_widgets'] == 1){
-            wp_enqueue_style($this->get_pluginStyle(), $this->get_pluginUrl() . '/css/' . $this->get_pluginWidgetStyle().'.css','', $this->pluginVersion,'');
+        if(isset($options)){
+            if($options['wtl_checkbox_widgets'] == 1) {
+                wp_enqueue_style($this->get_pluginStyle(), $this->get_pluginUrl() . '/css/' . $this->get_pluginWidgetStyle() . '.css', '', $this->pluginVersion, '');
+            }
         }
     }
 
@@ -333,7 +340,7 @@ class woo_title_limit{
     // shop page section create the checkbox for "..."
     public function wtl_field_render_title_shop($args){
         $option = $this->get_wtl_options();
-        $html = '<input type="checkbox" id="wtl_checkbox_etc_shop" name="wtl_opt[wtl_checkbox_etc_shop]" value="1"' . checked( 1, $option['wtl_checkbox_etc_shop'], false ) . '/>';
+        $html = '<input type="checkbox" id="wtl_checkbox_etc_shop" name="wtl_opt[wtl_checkbox_etc_shop]" value="1"' . checked( 1, isset($option['wtl_checkbox_etc_shop'])?$option['wtl_checkbox_etc_shop']:"0", false ) . '/>';
 
         echo $html;
     }
@@ -347,7 +354,7 @@ class woo_title_limit{
     // category page section create the checkbox for "..."
     public function wtl_field_render_title_category($args){
         $option = $this->get_wtl_options();
-        $html = '<input type="checkbox" id="wtl_checkbox_etc_category" name="wtl_opt[wtl_checkbox_etc_category]" value="1"' . checked( 1, $option['wtl_checkbox_etc_category'], false ) . '/>';
+        $html = '<input type="checkbox" id="wtl_checkbox_etc_category" name="wtl_opt[wtl_checkbox_etc_category]" value="1"' . checked( 1, isset($option['wtl_checkbox_etc_category'])?$option['wtl_checkbox_etc_category']:"0", false ) . '/>';
 
         echo $html;
     }
@@ -361,7 +368,7 @@ class woo_title_limit{
     // category page section create the checkbox for "..."
     public function wtl_field_render_title_product($args){
         $option = $this->get_wtl_options();
-        $html = '<input type="checkbox" id="wtl_checkbox_etc_product" name="wtl_opt[wtl_checkbox_etc_product]" value="1"' . checked( 1, $option['wtl_checkbox_etc_product'], false ) . '/>';
+        $html = '<input type="checkbox" id="wtl_checkbox_etc_product" name="wtl_opt[wtl_checkbox_etc_product]" value="1"' . checked( 1, isset($option['wtl_checkbox_etc_product'])?$option['wtl_checkbox_etc_product']:"0", false ) . '/>';
 
         echo $html;
     }
@@ -377,7 +384,7 @@ class woo_title_limit{
     // home page section create the checkbox for "..."
     public function wtl_field_render_title_home($args){
         $option = $this->get_wtl_options();
-        $html = '<input type="checkbox" id="wtl_checkbox_etc_home" name="wtl_opt[wtl_checkbox_etc_home]" value="1"' . checked( 1, $option['wtl_checkbox_etc_home'], false ) . '/>';
+        $html = '<input type="checkbox" id="wtl_checkbox_etc_home" name="wtl_opt[wtl_checkbox_etc_home]" value="1"' . checked( 1, isset($option['wtl_checkbox_etc_home'])?$option['wtl_checkbox_etc_home']:"0", false ) . '/>';
 
         echo $html;
     }
@@ -386,13 +393,13 @@ class woo_title_limit{
 // extra section create the checkbox activation of the widget setting + word cutter
     public function wtl_field_render_extra($args){
         $option = $this->get_wtl_options();
-        $html = '</br><input type="checkbox" id="wtl_checkbox_wordcutter" name="wtl_opt[wtl_checkbox_wordcutter]" value="1"' . checked( 1, $option['wtl_checkbox_wordcutter'], false ) . '/>';
+        $html = '</br><input type="checkbox" id="wtl_checkbox_wordcutter" name="wtl_opt[wtl_checkbox_wordcutter]" value="1"' . checked( 1, isset($option['wtl_checkbox_wordcutter'])?$option['wtl_checkbox_wordcutter']:"0", false ) . '/>';
 
         echo $html;
     }
     public function wtl_field_render_widgets($args){
         $option = $this->get_wtl_options();
-        $html = '<input type="checkbox" id="wtl_checkbox_widgets" name="wtl_opt[wtl_checkbox_widgets]" value="1"' . checked( 1, $option['wtl_checkbox_widgets'], false ) . '/>';
+        $html = '<input type="checkbox" id="wtl_checkbox_widgets" name="wtl_opt[wtl_checkbox_widgets]" value="1"' . checked( 1, isset($option['wtl_checkbox_widgets'])?$option['wtl_checkbox_widgets']:"0", false ) . '/>';
 
         echo $html;
     }
