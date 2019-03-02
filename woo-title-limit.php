@@ -3,7 +3,7 @@
 * Plugin Name: Woo Title Limit
 * Plugin URI: http://www.dimitri-wolf.de/woo-title-limit.html
 * Description: Allow to set a limit for WooCommerce product titles in the shop view
-* Version: 1.4.3
+* Version: 1.4.4
 * Author: Dima W.
 * Text Domain: woo-title-limit
 * Domain Path: /languages
@@ -20,7 +20,7 @@ class woo_title_limit{
     protected $pluginUrl;
     protected $pluginWidgetStyle = "woo-title-limit-widget";
     protected $pluginStyle = "woo-title-limit";
-    private $pluginVersion = "1.4.3";
+    private $pluginVersion = "1.4.4";
 
     /**
      * woo_title_limit constructor.
@@ -104,7 +104,7 @@ class woo_title_limit{
      */
     public function wtl_scripts(){
         $options = $this->get_wtl_options();
-        if(isset($options)){
+        if(isset($options['wtl_checkbox_widgets'])){
             if($options['wtl_checkbox_widgets'] == 1) {
                 wp_enqueue_style($this->get_pluginStyle(), $this->get_pluginUrl() . '/css/' . $this->get_pluginWidgetStyle() . '.css', '', $this->pluginVersion, '');
             }
