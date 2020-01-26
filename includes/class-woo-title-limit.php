@@ -70,7 +70,7 @@ class Woo_Title_Limit {
 		if ( defined( 'WOO_TITLE_LIMIT_VERSION' ) ) {
 			$this->version = WOO_TITLE_LIMIT_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '2.0.0';
 		}
 		$this->plugin_name = 'woo-title-limit';
 
