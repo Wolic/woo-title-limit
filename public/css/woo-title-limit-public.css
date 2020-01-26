@@ -2,3 +2,19 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+#help-box{
+    display: none;
+    position: fixed;
+    top: 150px;
+    background-color: #fff;
+    right: 150px;
+}
+
+.woocommerce ul.product_list_widget li a {
+    line-height: 1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+}
