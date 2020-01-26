@@ -100,4 +100,58 @@ class Woo_Title_Limit_Admin {
 
 	}
 
+	public function create_settings_menu(){
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-osa.php';
+        if ( class_exists( 'WP_OSA' ) ) {
+            /**
+             * Object Instantiation.
+             *
+             * Object for the class `WP_OSA`.
+             */
+            $wposa_obj = new WP_OSA();
+
+
+            // Section: Basic Settings.
+            $wposa_obj->add_section(
+                array(
+                    'id' => 'wtl_opt_shop',
+                    'title' => __('Basic Settings', 'WPOSA'),
+                )
+            );
+
+            $wposa_obj->add_section(
+                array(
+                    'id' => 'wtl_opt_product',
+                    'title' => __('Basic Settings', 'WPOSA'),
+                )
+            );
+
+            $wposa_obj->add_section(
+                array(
+                    'id' => 'wtl_opt_category',
+                    'title' => __('Basic Settings', 'WPOSA'),
+                )
+            );
+
+            $wposa_obj->add_section(
+                array(
+                    'id' => 'wtl_opt_home',
+                    'title' => __('Basic Settings', 'WPOSA'),
+                )
+            );
+            // Field: Number.
+            $wposa_obj->add_field(
+                'wtl_opt_shop',
+                array(
+                    'id'                => 'text_no',
+                    'type'              => 'number',
+                    'name'              => __( 'Number Input', 'WPOSA' ),
+                    'desc'              => __( 'Number field with validation callback `intval`', 'WPOSA' ),
+                    'default'           => 1,
+                    'sanitize_callback' => 'intval',
+                )
+            );
+        }
+    }
+
 }
