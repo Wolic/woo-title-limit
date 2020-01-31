@@ -100,6 +100,24 @@ class Woo_Title_Limit_Admin {
 
 	}
 
+	public function wtl_admin_notices(){
+        if (is_plugin_inactive('woocommerce/woocommerce.php')) {
+            ?>
+            <div class="notice notice-error is-dismissible">
+                <p>
+                    <strong><?php _e('Woo Title Limit Notice: WooCommerce is either not installed or not activated', 'woo-title-limit'); ?></strong>
+                </p>
+                <button type="button" class="notice-dismiss">
+                    <span class="screen-reader-text">Dismiss this notice.</span>
+                </button>
+            </div>
+            <?php
+        }
+    }
+
+    /**
+     *
+     */
 	public function create_settings_menu(){
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-osa.php';
         if ( class_exists( 'WP_OSA' ) ) {
@@ -108,47 +126,186 @@ class Woo_Title_Limit_Admin {
              *
              * Object for the class `WP_OSA`.
              */
-            $wposa_obj = new WP_OSA();
+            $wtl_opt_obj = new WP_OSA();
 
 
             // Section: Basic Settings.
-            $wposa_obj->add_section(
+            $wtl_opt_obj->add_section(
+                array(
+                    'id' => 'wtl_general',
+                    'title' => __('General', 'woo-title-limit'),
+                )
+            );
+
+            // Section: Basic Settings.
+            $wtl_opt_obj->add_section(
                 array(
                     'id' => 'wtl_opt_shop',
-                    'title' => __('Basic Settings', 'WPOSA'),
+                    'title' => __('Shop Page', 'woo-title-limit'),
                 )
             );
 
-            $wposa_obj->add_section(
+            $wtl_opt_obj->add_section(
                 array(
                     'id' => 'wtl_opt_product',
-                    'title' => __('Basic Settings', 'WPOSA'),
+                    'title' => __('Product Page', 'woo-title-limit'),
                 )
             );
 
-            $wposa_obj->add_section(
+            $wtl_opt_obj->add_section(
                 array(
                     'id' => 'wtl_opt_category',
-                    'title' => __('Basic Settings', 'WPOSA'),
+                    'title' => __('Category Page', 'woo-title-limit'),
                 )
             );
 
-            $wposa_obj->add_section(
+            $wtl_opt_obj->add_section(
                 array(
                     'id' => 'wtl_opt_home',
-                    'title' => __('Basic Settings', 'WPOSA'),
+                    'title' => __('Home Page', 'woo-title-limit'),
                 )
             );
+
+            $wtl_opt_obj->add_section(
+                array(
+                    'id' => 'wtl_opt_tag',
+                    'title' => __('Tag Page', 'woo-title-limit'),
+                )
+            );
+
+            $wtl_opt_obj->add_field(
+                'wtl_general',
+                array(
+                    'id'   => 'wordcutter',
+                    'type' => 'checkbox',
+                    'name' => __('Dont break words in title?', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
+                )
+            );
+
+            $wtl_opt_obj->add_field(
+                'wtl_general',
+                array(
+                    'id'   => 'auto_widgets',
+                    'type' => 'checkbox',
+                    'name' => __('Limit product title for widgets automatically? <br> (still beta ¯\_(ツ)_/¯)', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
+                )
+            );
+
             // Field: Number.
-            $wposa_obj->add_field(
+            $wtl_opt_obj->add_field(
                 'wtl_opt_shop',
                 array(
-                    'id'                => 'text_no',
+                    'id'                => 'count',
                     'type'              => 'number',
-                    'name'              => __( 'Number Input', 'WPOSA' ),
-                    'desc'              => __( 'Number field with validation callback `intval`', 'WPOSA' ),
-                    'default'           => 1,
+                    'name'              => __( 'Product title limit', 'woo-title-limit' ),
+                    'desc'              => __('Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit'),
+                    'default'           => 0,
                     'sanitize_callback' => 'intval',
+                )
+            );
+
+            // Field: Checkbox.
+            $wtl_opt_obj->add_field(
+                'wtl_opt_shop',
+                array(
+                    'id'   => 'dots',
+                    'type' => 'checkbox',
+                    'name' => __('Add "..." to title', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
+                )
+            );
+
+            $wtl_opt_obj->add_field(
+                'wtl_opt_product',
+                array(
+                    'id'                => 'count',
+                    'type'              => 'number',
+                    'name'              => __( 'Product title limit', 'woo-title-limit' ),
+                    'desc'              => __('Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit'),
+                    'default'           => 0,
+                    'sanitize_callback' => 'intval',
+                )
+            );
+
+            // Field: Checkbox.
+            $wtl_opt_obj->add_field(
+                'wtl_opt_product',
+                array(
+                    'id'   => 'dots',
+                    'type' => 'checkbox',
+                    'name' => __('Add "..." to title', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
+                )
+            );
+
+            $wtl_opt_obj->add_field(
+                'wtl_opt_category',
+                array(
+                    'id'                => 'count',
+                    'type'              => 'number',
+                    'name'              => __( 'Product title limit', 'woo-title-limit' ),
+                    'desc'              => __('Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit'),
+                    'default'           => 0,
+                    'sanitize_callback' => 'intval',
+                )
+            );
+
+            // Field: Checkbox.
+            $wtl_opt_obj->add_field(
+                'wtl_opt_category',
+                array(
+                    'id'   => 'dots',
+                    'type' => 'checkbox',
+                    'name' => __('Add "..." to title', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
+                )
+            );
+
+            $wtl_opt_obj->add_field(
+                'wtl_opt_home',
+                array(
+                    'id'                => 'count',
+                    'type'              => 'number',
+                    'name'              => __( 'Product title limit', 'woo-title-limit' ),
+                    'desc'              => __('Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit'),
+                    'default'           => 0,
+                    'sanitize_callback' => 'intval',
+                )
+            );
+
+            // Field: Checkbox.
+            $wtl_opt_obj->add_field(
+                'wtl_opt_home',
+                array(
+                    'id'   => 'dots',
+                    'type' => 'checkbox',
+                    'name' => __('Add "..." to title', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
+                )
+            );
+
+            $wtl_opt_obj->add_field(
+                'wtl_opt_tag',
+                array(
+                    'id'                => 'count',
+                    'type'              => 'number',
+                    'name'              => __( 'Product title limit', 'woo-title-limit' ),
+                    'desc'              => __('Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit'),
+                    'default'           => 0,
+                    'sanitize_callback' => 'intval',
+                )
+            );
+
+            // Field: Checkbox.
+            $wtl_opt_obj->add_field(
+                'wtl_opt_tag',
+                array(
+                    'id'   => 'dots',
+                    'type' => 'checkbox',
+                    'name' => __('Add "..." to title', 'woo-title-limit'),
+                    'desc' => __( '', 'woo-title-limit' ),
                 )
             );
         }

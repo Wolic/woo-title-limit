@@ -100,4 +100,93 @@ class Woo_Title_Limit_Public {
 
 	}
 
+    /**
+     * @param $page
+     * @return mixed
+     */
+	public function get_wtl_options($page){
+        return get_option("wtl_opt_{$page}");
+    }
+
+    /**
+     * @param $title
+     * @param $id
+     * @return false|string
+     */
+    public function get_shorten_product_title( $title, $id ) {
+        include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+
+        if (is_plugin_active('woocommerce/woocommerce.php')) {
+
+            if (get_post_type($id) !== 'product') {
+                return $title;
+            }
+
+            if (is_product()) {
+                return $this->shorten_title('product', $title);
+            }
+            if (is_product_category()) {
+                return $this->shorten_title('category', $title);
+            }
+            if (is_product_tag()) {
+                return $this->shorten_title('tag', $title);
+            }
+            if (is_shop()) {
+                return $this->shorten_title('shop', $title);
+            }
+            if (is_home()) {
+                return $this->shorten_title('home', $title);
+            }
+        }
+
+        return $title;
+    }
+
+    /**
+     * @param $wtl_page
+     * @param $title
+     * @return false|string
+     */
+    public function shorten_title($wtl_page, $title){
+
+        $general_options = get_option('wtl_general');
+        $wordcutter = isset($general_options['wordcutter']) ? $general_options['wordcutter'] : 'off';
+        $options = $this->get_wtl_options($wtl_page);
+        $dots = isset($options['dots']) ? $options['dots'] : 'off';
+        $count = isset($options['count']) ? $options['count'] : 0;
+
+        $pos = 0;
+        if (isset($options) && $count > 0) {
+            if ($dots == 'off' && $count < strlen($title)) {
+                if ($wordcutter == 'on') {
+                    $pos = strpos($title, ' ', $count);
+                    if (!$pos) {
+                        return $title;
+                    } else {
+                        return substr($title, 0, $pos);
+                    }
+                } else {
+                    return substr($title, 0, $count);
+                }
+            } else if ($dots == 'on' && $count < strlen($title)) {
+                if ($wordcutter == 'on') {
+                    $pos = strpos($title, ' ', $count);
+                    if (!$pos) {
+                        return $title;
+                    } else {
+                        return substr($title, 0, $pos) . '...';
+                    }
+                } else {
+                    return substr($title, 0, $count) . '...';
+                }
+            } else {
+                return $title;
+            }
+        } else {
+            return $title;
+        }
+
+
+    }
+
 }

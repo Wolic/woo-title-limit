@@ -156,6 +156,7 @@ class Woo_Title_Limit {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_notices', $plugin_admin, 'wtl_admin_notices' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'create_settings_menu',9 );
 
 	}
@@ -173,7 +174,7 @@ class Woo_Title_Limit {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		$this->loader->add_action( 'the_title', $plugin_public, 'get_shorten_product_title', 10, 2 );
 	}
 
 	/**
