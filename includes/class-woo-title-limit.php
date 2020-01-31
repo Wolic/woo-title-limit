@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       https://www.dimitri-wolf.de
- * @since      1.0.0
+ * @since      2.0.0
  *
  * @package    Woo_Title_Limit
  * @subpackage Woo_Title_Limit/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      2.0.0
  * @package    Woo_Title_Limit
  * @subpackage Woo_Title_Limit/includes
  * @author     Dima W. <wtl@dimitri-wolf.de>

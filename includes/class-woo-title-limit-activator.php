@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.0
+ * @since      2.0.0
  * @package    Woo_Title_Limit
  * @subpackage Woo_Title_Limit/includes
  * @author     Dima W. <wtl@dimitri-wolf.de>
@@ -27,7 +27,7 @@ class Woo_Title_Limit_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public static function activate() {
         add_option('wtl_count_shop', 100);

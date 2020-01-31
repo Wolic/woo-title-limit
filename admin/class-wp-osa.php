@@ -4,6 +4,8 @@
  *
  * Main class that deals with all other classes.
  *
+ * Thanks to ahmadawais https://github.com/ahmadawais/WP-OOP-Settings-API
+ * 
  * @since   1.0.0
  * @package WPOSA
  */
@@ -18,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * WP Settings API Class.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 if ( ! class_exists( 'WP_OSA' ) ) :
@@ -29,7 +31,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Sections array.
 		 *
 		 * @var   array
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		private $sections_array = array();
 
@@ -37,7 +39,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Fields array.
 		 *
 		 * @var   array
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		private $fields_array = array();
 
@@ -65,7 +67,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		/**
 		 * Admin Scripts.
 		 *
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		public function admin_scripts() {
 			// jQuery is needed.
@@ -89,7 +91,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Set Sections.
 		 *
 		 * @param array $sections
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		public function set_sections( $sections ) {
 			// Bail if not array.
@@ -108,7 +110,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Add a single section.
 		 *
 		 * @param array $section
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		public function add_section( $section ) {
 			// Bail if not array.
@@ -126,7 +128,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		/**
 		 * Set Fields.
 		 *
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		public function set_fields( $fields ) {
 			// Bail if not array.
@@ -145,7 +147,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		/**
 		 * Add a single field.
 		 *
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		public function add_field( $section, $field_array ) {
 			// Set the defaults
@@ -194,7 +196,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			 *   'title' => 'Section Title'
 			 * );
 			 *
-			 * @since 1.0.0
+			 * @since 2.0.0
 			 */
 			foreach ( $this->sections_array as $section ) {
 				if ( false == get_option( $section['id'] ) ) {
@@ -225,7 +227,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 				 * @param string $title
 				 * @param callable $callback
 				 * @param string $page | Page is same as section ID.
-				 * @since 1.0.0
+				 * @since 2.0.0
 				 */
 				add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
 			} // foreach ended.
@@ -250,7 +252,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			 *   'type' => 'text',
 			 * );
 			 *
-			 * @since 1.0.0
+			 * @since 2.0.0
 			 */
 			foreach ( $this->fields_array as $section => $field_array ) {
 				foreach ( $field_array as $field ) {
@@ -307,7 +309,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 					 * @param string   $page
 					 * @param string   $section = 'default'
 					 * @param array    $args = array()
-					 * @since 1.0.0
+					 * @since 2.0.0
 					 */
 
 					// @param string 	$id
@@ -332,7 +334,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 				 * @param string $field_group   | A settings group name.
 				 * @param string $field_name    | The name of an option to sanitize and save.
 				 * @param callable  $sanitize_callback = ''
-				 * @since 1.0.0
+				 * @since 2.0.0
 				 */
 				register_setting( $section['id'], $section['id'], array( $this, 'sanitize_fields' ) );
 			} // foreach ended.
@@ -343,7 +345,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		/**
 		 * Sanitize callback for Settings API fields.
 		 *
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 */
 		public function sanitize_fields( $fields ) {
 			foreach ( $fields as $field_slug => $field_value ) {
@@ -723,7 +725,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 				'Woo Title Limit',
 				'Woo Title Limit',
 				'manage_options',
-				'wtl',
+				'woo-title-limit',
 				array( $this, 'plugin_page' )
 			);
 		}

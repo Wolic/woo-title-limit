@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://www.dimitri-wolf.de
- * @since      1.0.0
+ * @since      2.0.0
  *
  * @package    Woo_Title_Limit
  * @subpackage Woo_Title_Limit/admin/partials
