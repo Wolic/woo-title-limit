@@ -137,7 +137,7 @@ class Woo_Title_Limit_Public {
 			if ( is_shop() ) {
 				return $this->shorten_title( 'shop', $title );
 			}
-			if ( is_home() ) {
+			if ( is_home() || is_front_page() ) {
 				return $this->shorten_title( 'home', $title );
 			}
 		}
