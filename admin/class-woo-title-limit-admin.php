@@ -135,7 +135,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_general',
 					'title' => __( 'General', 'woo-title-limit' ),
-					'desc' => __( 'Some settings that affect all areas.', 'woo-title-limit' )
+					'desc'  => __( 'Some settings that affect all areas.', 'woo-title-limit' ),
 				]
 			);
 
@@ -144,7 +144,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_shop',
 					'title' => __( 'Shop Page', 'woo-title-limit' ),
-					'desc' => __( 'Influences product titles on the shop page.', 'woo-title-limit' )
+					'desc'  => __( 'Influences product titles on the shop page.', 'woo-title-limit' ),
 				]
 			);
 
@@ -152,7 +152,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_product',
 					'title' => __( 'Product Page', 'woo-title-limit' ),
-					'desc' => __( 'Influences product titles on product pages.', 'woo-title-limit' )
+					'desc'  => __( 'Influences product titles on product pages.', 'woo-title-limit' ),
 				]
 			);
 
@@ -160,7 +160,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_category',
 					'title' => __( 'Category Page', 'woo-title-limit' ),
-					'desc' => __( 'Influences product titles on product category pages.', 'woo-title-limit' )
+					'desc'  => __( 'Influences product titles on product category pages.', 'woo-title-limit' ),
 				]
 			);
 
@@ -168,7 +168,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_home',
 					'title' => __( 'Home Page', 'woo-title-limit' ),
-					'desc' => __( 'Influences product titles on the home page.', 'woo-title-limit' )
+					'desc'  => __( 'Influences product titles on the home page.', 'woo-title-limit' ),
 				]
 			);
 
@@ -176,7 +176,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_tag',
 					'title' => __( 'Tag Page', 'woo-title-limit' ),
-					'desc' => __( 'Influences product titles on product tag pages.', 'woo-title-limit' )
+					'desc'  => __( 'Influences product titles on product tag pages.', 'woo-title-limit' ),
 				]
 			);
 
