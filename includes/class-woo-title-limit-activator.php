@@ -38,7 +38,7 @@ class Woo_Title_Limit_Activator {
 	        $wtl_count_category = (isset($old_options['wtl_count_category']) ? $old_options['wtl_count_category'] : 0);
 	        $wtl_count_product = (isset($old_options['wtl_count_product']) ? $old_options['wtl_count_product'] : 0);
 	        $wtl_count_home = (isset($old_options['wtl_count_home']) ? $old_options['wtl_count_home'] : 0);
-	        $wtl_checkbox_etc_shop = (isset($old_options['wtl_checkbox_etc_shop']) && $old_options['wtl_checkbox_etc_shop'] == '1') ? $old_options['wtl_checkbox_etc_shop'] : 'off';
+	        $wtl_checkbox_etc_shop = (isset($old_options['wtl_checkbox_etc_shop']) && $old_options['wtl_checkbox_etc_shop'] == '1') ? 'on' : 'off';
 	        $wtl_checkbox_etc_category = (isset($old_options['wtl_checkbox_etc_category']) && $old_options['wtl_checkbox_etc_category'] == '1') ? 'on' : 'off';
 	        $wtl_checkbox_etc_product = (isset($old_options['wtl_checkbox_etc_product']) && $old_options['wtl_checkbox_etc_product'] == '1') ? 'on' : 'off';
 	        $wtl_checkbox_etc_home = (isset($old_options['wtl_checkbox_etc_home']) && $old_options['wtl_checkbox_etc_home'] == '1') ? 'on' : 'off';
@@ -48,23 +48,23 @@ class Woo_Title_Limit_Activator {
 	        $new_options = array(
 	            'wtl_opt_shop' => array(
 	                'count' => $wtl_count_shop,
-                    'etc' => $wtl_checkbox_etc_shop,
+                    'dots' => $wtl_checkbox_etc_shop,
                 ),
                 'wtl_opt_category' => array(
                     'count' => $wtl_count_category,
-                    'etc' => $wtl_checkbox_etc_category,
+                    'dots' => $wtl_checkbox_etc_category,
                 ),
                 'wtl_opt_product' => array(
                     'count' => $wtl_count_product,
-                    'etc' => $wtl_checkbox_etc_product,
+                    'dots' => $wtl_checkbox_etc_product,
                 ),
                 'wtl_opt_home' => array(
                     'count' => $wtl_count_home,
-                    'etc' => $wtl_checkbox_etc_home,
+                    'dots' => $wtl_checkbox_etc_home,
                 ),
                 'wtl_opt_tag' => array(
                     'count' => 0,
-                    'etc' => 'off',
+                    'dots' => 'off',
                 ),
                 'wtl_opt_general' => array(
                     'wordcutter' => $wtl_checkbox_wordcutter,
