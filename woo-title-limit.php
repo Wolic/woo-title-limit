@@ -15,8 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Woo Title Limit
  * Plugin URI:        https://www.dimitri-wolf.de
- * Description:       This is a short description of what the plugin does. It's
- *     displayed in the WordPress admin area.
+ * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           2.0.0
  * Author: Dima W.
  * Author URI:        https://www.dimitri-wolf.de
