@@ -45,7 +45,7 @@
 Reach out to me at one of the following places!
 
 - Website at <a href="https://www.dimitri-wolf.de" target="_blank">`dimitri-wolf.de`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
+- Twitter at <a href="https://twitter.com/dimawolic" target="_blank">`@dimawolic`</a>
 
 ---
 
