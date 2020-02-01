@@ -71,10 +71,11 @@ class Woo_Title_Limit_Activator {
                     'auto_widgets' => $wtl_checkbox_widgets,
                 ),
             );
-        }
-	    foreach ($new_options as $key => $value){
-            update_option($key, $value);
-        }
+
+            foreach ($new_options as $key => $value){
+                update_option($key, $value);
+            }
+	    }
 	}
 
 }
