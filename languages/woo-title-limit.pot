@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-01T21:30:08+01:00\n"
-"PO-Revision-Date: 2020-02-01T21:30:08+01:00\n"
+"POT-Creation-Date: 2020-02-01T22:03:30+01:00\n"
+"PO-Revision-Date: 2020-02-01T22:03:30+01:00\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: woo-title-limit\n"
 
@@ -24,7 +24,7 @@ msgid "https://www.dimitri-wolf.de"
 msgstr ""
 
 #. Description of the plugin
-msgid "This is a short description of what the plugin does. It's displayed in the WordPress admin area."
+msgid "Allows you to set product title lengths for WooCommerce products."
 msgstr ""
 
 #. Author of the plugin
