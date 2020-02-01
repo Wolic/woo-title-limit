@@ -135,6 +135,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_general',
 					'title' => __( 'General', 'woo-title-limit' ),
+					'desc' => __( 'Some settings that affect all areas.', 'woo-title-limit' )
 				]
 			);
 
@@ -143,6 +144,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_shop',
 					'title' => __( 'Shop Page', 'woo-title-limit' ),
+					'desc' => __( 'Influences product titles on the shop page.', 'woo-title-limit' )
 				]
 			);
 
@@ -150,6 +152,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_product',
 					'title' => __( 'Product Page', 'woo-title-limit' ),
+					'desc' => __( 'Influences product titles on product pages.', 'woo-title-limit' )
 				]
 			);
 
@@ -157,6 +160,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_category',
 					'title' => __( 'Category Page', 'woo-title-limit' ),
+					'desc' => __( 'Influences product titles on product category pages.', 'woo-title-limit' )
 				]
 			);
 
@@ -164,6 +168,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_home',
 					'title' => __( 'Home Page', 'woo-title-limit' ),
+					'desc' => __( 'Influences product titles on the home page.', 'woo-title-limit' )
 				]
 			);
 
@@ -171,6 +176,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'    => 'wtl_opt_tag',
 					'title' => __( 'Tag Page', 'woo-title-limit' ),
+					'desc' => __( 'Influences product titles on product tag pages.', 'woo-title-limit' )
 				]
 			);
 
@@ -179,7 +185,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'wordcutter',
 					'type' => 'checkbox',
-					'name' => __( 'Dont break words in title?', 'woo-title-limit' ),
+					'name' => __( 'Shorten the product title at the end of the word?', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
@@ -189,7 +195,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'auto_widgets',
 					'type' => 'checkbox',
-					'name' => __( 'Limit product title for widgets automatically? <br> (still beta ¯\_(ツ)_/¯)', 'woo-title-limit' ),
+					'name' => __( 'Shorten product title for widgets automatically? <br> (still beta ¯\_(ツ)_/¯)', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
@@ -200,7 +206,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'                => 'count',
 					'type'              => 'number',
-					'name'              => __( 'Product title limit', 'woo-title-limit' ),
+					'name'              => __( 'Product Title length', 'woo-title-limit' ),
 					'desc'              => __( 'Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit' ),
 					'default'           => 0,
 					'sanitize_callback' => 'intval',
@@ -213,7 +219,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'dots',
 					'type' => 'checkbox',
-					'name' => __( 'Add "..." to title', 'woo-title-limit' ),
+					'name' => __( 'Add "..." to the title', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
@@ -223,7 +229,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'                => 'count',
 					'type'              => 'number',
-					'name'              => __( 'Product title limit', 'woo-title-limit' ),
+					'name'              => __( 'Product Title length', 'woo-title-limit' ),
 					'desc'              => __( 'Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit' ),
 					'default'           => 0,
 					'sanitize_callback' => 'intval',
@@ -236,7 +242,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'dots',
 					'type' => 'checkbox',
-					'name' => __( 'Add "..." to title', 'woo-title-limit' ),
+					'name' => __( 'Add "..." to the title', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
@@ -246,7 +252,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'                => 'count',
 					'type'              => 'number',
-					'name'              => __( 'Product title limit', 'woo-title-limit' ),
+					'name'              => __( 'Product Title length', 'woo-title-limit' ),
 					'desc'              => __( 'Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit' ),
 					'default'           => 0,
 					'sanitize_callback' => 'intval',
@@ -259,7 +265,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'dots',
 					'type' => 'checkbox',
-					'name' => __( 'Add "..." to title', 'woo-title-limit' ),
+					'name' => __( 'Add "..." to the title', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
@@ -269,7 +275,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'                => 'count',
 					'type'              => 'number',
-					'name'              => __( 'Product title limit', 'woo-title-limit' ),
+					'name'              => __( 'Product Title length', 'woo-title-limit' ),
 					'desc'              => __( 'Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit' ),
 					'default'           => 0,
 					'sanitize_callback' => 'intval',
@@ -282,7 +288,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'dots',
 					'type' => 'checkbox',
-					'name' => __( 'Add "..." to title', 'woo-title-limit' ),
+					'name' => __( 'Add "..." to the title', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
@@ -292,7 +298,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'                => 'count',
 					'type'              => 'number',
-					'name'              => __( 'Product title limit', 'woo-title-limit' ),
+					'name'              => __( 'Product Title length', 'woo-title-limit' ),
 					'desc'              => __( 'Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit' ),
 					'default'           => 0,
 					'sanitize_callback' => 'intval',
@@ -305,7 +311,7 @@ class Woo_Title_Limit_Admin {
 				[
 					'id'   => 'dots',
 					'type' => 'checkbox',
-					'name' => __( 'Add "..." to title', 'woo-title-limit' ),
+					'name' => __( 'Add "..." to the title', 'woo-title-limit' ),
 					'desc' => __( '', 'woo-title-limit' ),
 				]
 			);
