@@ -3,28 +3,33 @@ Contributors: DimaW
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X6JSPSAFCXJBW
 Tags: woocommerce, product title, title, length, limit, shop
 Requires at least: 3.0.1
-Tested up to: 5.1
-Stable tag: 1.4.4
+Tested up to: 5.3.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Set a limit for WooCommerce product titles at the frontend of your shop.
 
 == Description ==
-Easy set the maximum length of product titles for WooCommerce in the shop and category view. No more broked themes trough too long product titles. Useful for automatically added affiliate products.
+Simply set the maximum length of product titles for WooCommerce in the shop, category, tag, product view and on the homepage.
+No broken templates due to too long product titles.
+Useful for automatically added affiliate products.
+
 = Features: =
 * Set max. title length for the shop view
 * Set max. title length for the product category view
+* Set max. title length for the product tag view
 * Set max. title length for the product view
-* Optional: limit title at the end of the upcoming word instead of breaking the title
-* Limit product titles in Woocommerce widgets automatically
+* Set max. title length for the home page
+* Optional: limit title length at the end of the current word instead of breaking the title
+* Automatically limit product titles in Woocommerce widgets (optional)
 * Add "..." if product titles are longer then the limit
 
 == Installation ==
 
 1. Upload the plugin directory to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings->Woo Title Limit screen to configure the plugin and set up your title limits.
+3. Use the Settings->Woo Title Limit screen to configure the plugin and set up your title lengths.
 
 == Frequently Asked Questions ==
 
@@ -32,10 +37,23 @@ Send me your questions to wtl@dimitri-wolf.de
 
 == Screenshots ==
 1. WooCommerce frontend without a limit for product titles.
-2. WooCommerce frontend with a limi for product titles using Woo Title Limit.
+2. WooCommerce frontend with a limit for product titles using Woo Title Limit.
 3. Woo Title Limit easy to use settings page.
+4. Woo Title Limit easy to use settings page.
+5. Woo Title Limit easy to use settings page.
 
 == Changelog ==
+= 2.0.0 =
+* The whole plugin was refactored. The entire structure is now easy to maintain. In this way, new functions can be integrated more easily and errors corrected more quickly.
+* The settings page was revised and divided into tabs. This makes it easier to integrate new settings and improves the overview.
+* Die Einstellungen werden in der Datenbank jetzt in mehreren Optionen gespeichert. Version 2.0.0 ist dabei kompatibel zu früheren Versionen, da bei einem Update die alten Einstellungen migriert werden. Du kannst jederzeit auf eine ältere Version wechseln, solltest du Fehler feststellen.
+* update: The texts have been revised and now better describe the respective option.
+* add: additional translations
+* add: options for product tag sites
+* add: readme.md file
+* fix: warnings and notices fixed, removed unnecessary code
+* tested with: wordpress 5.3.2 and WooCommerce 3.9.1
+
 = 1.4.4 =
 * fix: undefined notice
 
