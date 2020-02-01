@@ -16,11 +16,18 @@
  * Plugin Name:       Woo Title Limit
  * Plugin URI:        https://www.dimitri-wolf.de
  * Description:       This is a short description of what the plugin does. It's
- *     displayed in the WordPress admin area. Version:           2.0.0 Author:
- *               Dima W. Author URI:        https://www.dimitri-wolf.de
- *     License:           GPL-2.0+ License URI:
- *     http://www.gnu.org/licenses/gpl-2.0.txt Text Domain:
- *     woo-title-limit Domain Path:       /languages
+ *     displayed in the WordPress admin area.
+ * Version:           2.0.0
+ * Author: Dima W.
+ * Author URI:        https://www.dimitri-wolf.de
+ * License:           GPL-2.0+ License
+ * URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ *
+ * Text Domain: woo-title-limit
+ * Domain Path: /languages
+ *
+ * WC requires at least: 3.0
+ * WC tested up to: 3.9.1
  */
 
 // If this file is called directly, abort.
