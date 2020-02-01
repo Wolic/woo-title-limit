@@ -9,7 +9,7 @@
  * a function that starts the plugin.
  *
  * @link              https://www.dimitri-wolf.de
- * @since             1.0.0
+ * @since             2.0.0
  * @package           Woo_Title_Limit
  *
  * @wordpress-plugin
