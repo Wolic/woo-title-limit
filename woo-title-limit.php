@@ -3,10 +3,10 @@
 /**
  * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
+ * This file is read by WordPress to generate the plugin information in the
+ * plugin admin area. This file also includes all of the dependencies used by
+ * the plugin, registers the activation and deactivation functions, and defines
+ * a function that starts the plugin.
  *
  * @link              https://www.dimitri-wolf.de
  * @since             1.0.0
@@ -15,14 +15,12 @@
  * @wordpress-plugin
  * Plugin Name:       Woo Title Limit
  * Plugin URI:        https://www.dimitri-wolf.de
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           2.0.0
- * Author:            Dima W.
- * Author URI:        https://www.dimitri-wolf.de
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       woo-title-limit
- * Domain Path:       /languages
+ * Description:       This is a short description of what the plugin does. It's
+ *     displayed in the WordPress admin area. Version:           2.0.0 Author:
+ *               Dima W. Author URI:        https://www.dimitri-wolf.de
+ *     License:           GPL-2.0+ License URI:
+ *     http://www.gnu.org/licenses/gpl-2.0.txt Text Domain:
+ *     woo-title-limit Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
@@ -74,4 +72,5 @@ function run_woo_title_limit() {
 	$plugin->run();
 
 }
+
 run_woo_title_limit();

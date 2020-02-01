@@ -36,12 +36,11 @@ class Woo_Title_Limit_i18n {
 
 		load_plugin_textdomain(
 			'woo-title-limit',
-			false,
+			FALSE,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
 
 	}
-
 
 
 }

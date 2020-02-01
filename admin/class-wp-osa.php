@@ -5,7 +5,7 @@
  * Main class that deals with all other classes.
  *
  * Thanks to ahmadawais https://github.com/ahmadawais/WP-OOP-Settings-API
- * 
+ *
  * @since   1.0.0
  * @package WPOSA
  */
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * @var   array
 		 * @since 2.0.0
 		 */
-		private $sections_array = array();
+		private $sections_array = [];
 
 		/**
 		 * Fields array.
@@ -41,7 +41,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * @var   array
 		 * @since 2.0.0
 		 */
-		private $fields_array = array();
+		private $fields_array = [];
 
 		/**
 		 * Constructor.
@@ -50,17 +50,17 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 */
 		public function __construct() {
 			// Enqueue the admin scripts.
-			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 
 			// Hook it up.
-			add_action( 'admin_init', array( $this, 'admin_init' ) );
+			add_action( 'admin_init', [ $this, 'admin_init' ] );
 
 			// Menu.
-			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+			add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 
-            if ( ! defined( 'WPOSA_VERSION' ) ) {
-                define( 'WPOSA_VERSION', WOO_TITLE_LIMIT_VERSION );
-            }
+			if ( ! defined( 'WPOSA_VERSION' ) ) {
+				define( 'WPOSA_VERSION', WOO_TITLE_LIMIT_VERSION );
+			}
 
 		}
 
@@ -77,8 +77,12 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			wp_enqueue_script(
 				'iris',
 				admin_url( 'js/iris.min.js' ),
-				array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
-				false,
+				[
+					'jquery-ui-draggable',
+					'jquery-ui-slider',
+					'jquery-touch-punch',
+				],
+				FALSE,
 				1
 			);
 
@@ -91,12 +95,13 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Set Sections.
 		 *
 		 * @param array $sections
+		 *
 		 * @since 2.0.0
 		 */
 		public function set_sections( $sections ) {
 			// Bail if not array.
 			if ( ! is_array( $sections ) ) {
-				return false;
+				return FALSE;
 			}
 
 			// Assign to the sections array.
@@ -110,12 +115,13 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Add a single section.
 		 *
 		 * @param array $section
+		 *
 		 * @since 2.0.0
 		 */
 		public function add_section( $section ) {
 			// Bail if not array.
 			if ( ! is_array( $section ) ) {
-				return false;
+				return FALSE;
 			}
 
 			// Assign the section to sections array.
@@ -133,7 +139,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		public function set_fields( $fields ) {
 			// Bail if not array.
 			if ( ! is_array( $fields ) ) {
-				return false;
+				return FALSE;
 			}
 
 			// Assign the fields.
@@ -143,7 +149,6 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		}
 
 
-
 		/**
 		 * Add a single field.
 		 *
@@ -151,12 +156,12 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 */
 		public function add_field( $section, $field_array ) {
 			// Set the defaults
-			$defaults = array(
+			$defaults = [
 				'id'   => '',
 				'name' => '',
 				'desc' => '',
 				'type' => 'text',
-			);
+			];
 
 			// Combine the defaults with user's arguements.
 			$arg = wp_parse_args( $field_array, $defaults );
@@ -166,7 +171,6 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 
 			return $this;
 		}
-
 
 
 		/**
@@ -199,7 +203,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			 * @since 2.0.0
 			 */
 			foreach ( $this->sections_array as $section ) {
-				if ( false == get_option( $section['id'] ) ) {
+				if ( FALSE == get_option( $section['id'] ) ) {
 					// Add a new field as section ID.
 					add_option( $section['id'] );
 				}
@@ -210,14 +214,14 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 					$section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
 
 					// Create the callback for description.
-					$callback = function() use ( $section ) {
+					$callback = function () use ( $section ) {
 						echo str_replace( '"', '\"', $section['desc'] );
 					};
 
 				} elseif ( isset( $section['callback'] ) ) {
 					$callback = $section['callback'];
 				} else {
-					$callback = null;
+					$callback = NULL;
 				}
 
 				/**
@@ -227,6 +231,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 				 * @param string $title
 				 * @param callable $callback
 				 * @param string $page | Page is same as section ID.
+				 *
 				 * @since 2.0.0
 				 */
 				add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
@@ -257,7 +262,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			foreach ( $this->fields_array as $section => $field_array ) {
 				foreach ( $field_array as $field ) {
 					// ID.
-					$id = isset( $field['id'] ) ? $field['id'] : false;
+					$id = isset( $field['id'] ) ? $field['id'] : FALSE;
 
 					// Type.
 					$type = isset( $field['type'] ) ? $field['type'] : 'text';
@@ -272,7 +277,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 					$description = isset( $field['desc'] ) ? $field['desc'] : '';
 
 					// Size.
-					$size = isset( $field['size'] ) ? $field['size'] : null;
+					$size = isset( $field['size'] ) ? $field['size'] : NULL;
 
 					// Options.
 					$options = isset( $field['options'] ) ? $field['options'] : '';
@@ -286,7 +291,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 					// Sanitize Callback.
 					$sanitize_callback = isset( $field['sanitize_callback'] ) ? $field['sanitize_callback'] : '';
 
-					$args = array(
+					$args = [
 						'id'                => $id,
 						'type'              => $type,
 						'name'              => $name,
@@ -298,17 +303,18 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 						'std'               => $default,
 						'placeholder'       => $placeholder,
 						'sanitize_callback' => $sanitize_callback,
-					);
+					];
 
 					/**
 					 * Add a new field to a section of a settings page.
 					 *
-					 * @param string   $id
-					 * @param string   $title
+					 * @param string $id
+					 * @param string $title
 					 * @param callable $callback
-					 * @param string   $page
-					 * @param string   $section = 'default'
-					 * @param array    $args = array()
+					 * @param string $page
+					 * @param string $section = 'default'
+					 * @param array $args = array()
+					 *
 					 * @since 2.0.0
 					 */
 
@@ -318,7 +324,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 					add_settings_field(
 						$field_id,
 						$name,
-						array( $this, 'callback_' . $type ),
+						[ $this, 'callback_' . $type ],
 						$section,
 						$section,
 						$args
@@ -331,12 +337,16 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 				/**
 				 * Registers a setting and its sanitization callback.
 				 *
-				 * @param string $field_group   | A settings group name.
-				 * @param string $field_name    | The name of an option to sanitize and save.
-				 * @param callable  $sanitize_callback = ''
+				 * @param string $field_group | A settings group name.
+				 * @param string $field_name | The name of an option to sanitize and save.
+				 * @param callable $sanitize_callback = ''
+				 *
 				 * @since 2.0.0
 				 */
-				register_setting( $section['id'], $section['id'], array( $this, 'sanitize_fields' ) );
+				register_setting( $section['id'], $section['id'], [
+					$this,
+					'sanitize_fields',
+				] );
 			} // foreach ended.
 
 		} // admin_init() ended.
@@ -366,12 +376,13 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Get sanitization callback for given option slug
 		 *
 		 * @param string $slug option slug.
+		 *
 		 * @return mixed string | bool false
 		 * @since  1.0.0
 		 */
 		function get_sanitize_callback( $slug = '' ) {
 			if ( empty( $slug ) ) {
-				return false;
+				return FALSE;
 			}
 
 			// Iterate over registered fields and see if we can find proper callback.
@@ -382,11 +393,11 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 					}
 
 					// Return the callback name.
-					return isset( $field['sanitize_callback'] ) && is_callable( $field['sanitize_callback'] ) ? $field['sanitize_callback'] : false;
+					return isset( $field['sanitize_callback'] ) && is_callable( $field['sanitize_callback'] ) ? $field['sanitize_callback'] : FALSE;
 				}
 			}
 
-			return false;
+			return FALSE;
 		}
 
 
@@ -435,7 +446,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 			$type  = isset( $args['type'] ) ? $args['type'] : 'text';
 
-			$html  = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"placeholder="%6$s"/>', $type, $size, $args['section'], $args['id'], $value, $args['placeholder'] );
+			$html = sprintf( '<input type="%1$s" class="%2$s-text" id="%3$s[%4$s]" name="%3$s[%4$s]" value="%5$s"placeholder="%6$s"/>', $type, $size, $args['section'], $args['id'], $value, $args['placeholder'] );
 			$html .= $this->get_field_description( $args );
 
 			echo $html;
@@ -469,10 +480,10 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 
-			$html  = '<fieldset>';
+			$html = '<fieldset>';
 			$html .= sprintf( '<label for="wposa-%1$s[%2$s]">', $args['section'], $args['id'] );
 			$html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
-			$html .= sprintf( '<input type="checkbox" class="checkbox" id="wposa-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
+			$html .= sprintf( '<input type="checkbox" class="checkbox" id="wposa-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', FALSE ) );
 			$html .= sprintf( '%1$s</label>', $args['desc'] );
 			$html .= '</fieldset>';
 
@@ -491,9 +502,9 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$html = '<fieldset>';
 			foreach ( $args['options'] as $key => $label ) {
 				$checked = isset( $value[ $key ] ) ? $value[ $key ] : '0';
-				$html   .= sprintf( '<label for="wposa-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-				$html   .= sprintf( '<input type="checkbox" class="checkbox" id="wposa-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
-				$html   .= sprintf( '%1$s</label><br>', $label );
+				$html    .= sprintf( '<label for="wposa-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
+				$html    .= sprintf( '<input type="checkbox" class="checkbox" id="wposa-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, FALSE ) );
+				$html    .= sprintf( '%1$s</label><br>', $label );
 			}
 			$html .= $this->get_field_description( $args );
 			$html .= '</fieldset>';
@@ -513,7 +524,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$html = '<fieldset>';
 			foreach ( $args['options'] as $key => $label ) {
 				$html .= sprintf( '<label for="wposa-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-				$html .= sprintf( '<input type="radio" class="radio" id="wposa-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+				$html .= sprintf( '<input type="radio" class="radio" id="wposa-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, FALSE ) );
 				$html .= sprintf( '%1$s</label><br>', $label );
 			}
 			$html .= $this->get_field_description( $args );
@@ -534,7 +545,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 
 			$html = sprintf( '<select class="%1$s" name="%2$s[%3$s]" id="%2$s[%3$s]">', $size, $args['section'], $args['id'] );
 			foreach ( $args['options'] as $key => $label ) {
-				$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $value, $key, false ), $label );
+				$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $value, $key, FALSE ), $label );
 			}
 			$html .= sprintf( '</select>' );
 			$html .= $this->get_field_description( $args );
@@ -552,7 +563,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$value = esc_textarea( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-			$html  = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]">%4$s</textarea>', $size, $args['section'], $args['id'], $value );
+			$html = sprintf( '<textarea rows="5" cols="55" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]">%4$s</textarea>', $size, $args['section'], $args['id'], $value );
 			$html .= $this->get_field_description( $args );
 
 			echo $html;
@@ -562,6 +573,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * Displays a textarea for a settings field
 		 *
 		 * @param array $args settings field args.
+		 *
 		 * @return string
 		 */
 		function callback_html( $args ) {
@@ -580,11 +592,11 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 
 			echo '<div style="max-width: ' . $size . ';">';
 
-			$editor_settings = array(
-				'teeny'         => true,
+			$editor_settings = [
+				'teeny'         => TRUE,
 				'textarea_name' => $args['section'] . '[' . $args['id'] . ']',
 				'textarea_rows' => 10,
-			);
+			];
 			if ( isset( $args['options'] ) && is_array( $args['options'] ) ) {
 				$editor_settings = array_merge( $editor_settings, $args['options'] );
 			}
@@ -607,10 +619,10 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 			$id    = $args['section'] . '[' . $args['id'] . ']';
 			$label = isset( $args['options']['button_label'] ) ?
-			$args['options']['button_label'] :
-			__( 'Choose File' );
+				$args['options']['button_label'] :
+				__( 'Choose File' );
 
-			$html  = sprintf( '<input type="text" class="%1$s-text wpsa-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
+			$html = sprintf( '<input type="text" class="%1$s-text wpsa-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
 			$html .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
 			$html .= $this->get_field_description( $args );
 
@@ -628,10 +640,10 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 			$id    = $args['section'] . '[' . $args['id'] . ']';
 			$label = isset( $args['options']['button_label'] ) ?
-			$args['options']['button_label'] :
-			__( 'Choose Image' );
+				$args['options']['button_label'] :
+				__( 'Choose Image' );
 
-			$html  = sprintf( '<input type="text" class="%1$s-text wpsa-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
+			$html = sprintf( '<input type="text" class="%1$s-text wpsa-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
 			$html .= '<input type="button" class="button wpsa-browse" value="' . $label . '" />';
 			$html .= $this->get_field_description( $args );
 			$html .= '<p class="wpsa-image-preview"><img src=""/></p>';
@@ -649,7 +661,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-			$html  = sprintf( '<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
+			$html = sprintf( '<input type="password" class="%1$s-text" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
 			$html .= $this->get_field_description( $args );
 
 			echo $html;
@@ -665,7 +677,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'], $args['placeholder'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-			$html  = sprintf( '<input type="text" class="%1$s-text color-picker" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" placeholder="%6$s" />', $size, $args['section'], $args['id'], $value, $args['std'], $args['placeholder'] );
+			$html = sprintf( '<input type="text" class="%1$s-text color-picker" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" placeholder="%6$s" />', $size, $args['section'], $args['id'], $value, $args['std'], $args['placeholder'] );
 			$html .= $this->get_field_description( $args );
 
 			echo $html;
@@ -680,7 +692,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		function callback_separator( $args ) {
 			$type = isset( $args['type'] ) ? $args['type'] : 'separator';
 
-			$html  = '';
+			$html = '';
 			$html .= '<div class="wpsa-settings-separator"></div>';
 			echo $html;
 		}
@@ -689,9 +701,10 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		/**
 		 * Get the value of a settings field
 		 *
-		 * @param string $option  settings field name.
+		 * @param string $option settings field name.
 		 * @param string $section the section name this field belongs to.
 		 * @param string $default default text if it's not found.
+		 *
 		 * @return string
 		 */
 		function get_option( $option, $section, $default = '' ) {
@@ -713,6 +726,7 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 * @param string $capability
 		 * @param string $menu_slug
 		 * @param callable $function = ''
+		 *
 		 * @author Ahmad Awais
 		 * @since  [version]
 		 */
@@ -720,23 +734,23 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		// public function admin_menu( $page_title = 'Page Title', $menu_title = 'Menu Title', $capability = 'manage_options', $menu_slug = 'settings_page', $callable = 'plugin_page' ) {
 		public function admin_menu() {
 			// add_options_page( $page_title, $menu_title, $capability, $menu_slug, array( $this, $callable ) );
-            add_submenu_page(
-                'options-general.php',
+			add_submenu_page(
+				'options-general.php',
 				'Woo Title Limit',
 				'Woo Title Limit',
 				'manage_options',
 				'woo-title-limit',
-				array( $this, 'plugin_page' )
+				[ $this, 'plugin_page' ]
 			);
 		}
 
 		public function plugin_page() {
-            echo '<div class="wrap">';
-            echo '<h1>Woo Title Limit Options <span style="font-size:50%;">v' . WPOSA_VERSION . '</span></h1>';
+			echo '<div class="wrap">';
+			echo '<h1>Woo Title Limit Options <span style="font-size:50%;">v' . WPOSA_VERSION . '</span></h1>';
 
-            $this->show_navigation();
-            $this->show_forms();
-            echo '</div>';
+			$this->show_navigation();
+			$this->show_forms();
+			echo '</div>';
 		}
 
 		/**
@@ -763,24 +777,24 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 */
 		function show_forms() {
 			?>
-			<div class="metabox-holder">
+            <div class="metabox-holder">
 				<?php foreach ( $this->sections_array as $form ) { ?>
-					<!-- style="display: none;" -->
-					<div id="<?php echo $form['id']; ?>" class="group" >
-						<form method="post" action="options.php">
+                    <!-- style="display: none;" -->
+                    <div id="<?php echo $form['id']; ?>" class="group">
+                        <form method="post" action="options.php">
 							<?php
 							do_action( 'wsa_form_top_' . $form['id'], $form );
 							settings_fields( $form['id'] );
 							do_settings_sections( $form['id'] );
 							do_action( 'wsa_form_bottom_' . $form['id'], $form );
 							?>
-							<div style="padding-left: 10px">
-								<?php submit_button(null, 'primary', 'submit_'.$form['id']); ?>
-							</div>
-						</form>
-					</div>
+                            <div style="padding-left: 10px">
+								<?php submit_button( NULL, 'primary', 'submit_' . $form['id'] ); ?>
+                            </div>
+                        </form>
+                    </div>
 				<?php } ?>
-			</div>
+            </div>
 			<?php
 			$this->script();
 		}
@@ -792,136 +806,138 @@ if ( ! class_exists( 'WP_OSA' ) ) :
 		 */
 		function script() {
 			?>
-			<script>
-				jQuery( document ).ready( function( $ ) {
+            <script>
+                jQuery(document).ready(function ($) {
 
-				//Initiate Color Picker.
-				$('.color-picker').iris();
+                    //Initiate Color Picker.
+                    $('.color-picker').iris();
 
-				// Switches option sections
-				$( '.group' ).hide();
-				var activetab = '';
-				if ( 'undefined' != typeof localStorage ) {
-					activetab = localStorage.getItem( 'activetab' );
-				}
-				if ( '' != activetab && $( activetab ).length ) {
-					$( activetab ).fadeIn();
-				} else {
-					$( '.group:first' ).fadeIn();
-				}
-				$( '.group .collapsed' ).each( function() {
-					$( this )
-						.find( 'input:checked' )
-						.parent()
-						.parent()
-						.parent()
-						.nextAll()
-						.each( function() {
-							if ( $( this ).hasClass( 'last' ) ) {
-								$( this ).removeClass( 'hidden' );
-								return false;
-							}
-							$( this )
-								.filter( '.hidden' )
-								.removeClass( 'hidden' );
-						});
-				});
+                    // Switches option sections
+                    $('.group').hide();
+                    var activetab = '';
+                    if ('undefined' != typeof localStorage) {
+                        activetab = localStorage.getItem('activetab');
+                    }
+                    if ('' != activetab && $(activetab).length) {
+                        $(activetab).fadeIn();
+                    } else {
+                        $('.group:first').fadeIn();
+                    }
+                    $('.group .collapsed').each(function () {
+                        $(this)
+                            .find('input:checked')
+                            .parent()
+                            .parent()
+                            .parent()
+                            .nextAll()
+                            .each(function () {
+                                if ($(this).hasClass('last')) {
+                                    $(this).removeClass('hidden');
+                                    return false;
+                                }
+                                $(this)
+                                    .filter('.hidden')
+                                    .removeClass('hidden');
+                            });
+                    });
 
-				if ( '' != activetab && $( activetab + '-tab' ).length ) {
-					$( activetab + '-tab' ).addClass( 'nav-tab-active' );
-				} else {
-					$( '.nav-tab-wrapper a:first' ).addClass( 'nav-tab-active' );
-				}
-				$( '.nav-tab-wrapper a' ).click( function( evt ) {
-					$( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-					$( this )
-						.addClass( 'nav-tab-active' )
-						.blur();
-					var clicked_group = $( this ).attr( 'href' );
-					if ( 'undefined' != typeof localStorage ) {
-						localStorage.setItem( 'activetab', $( this ).attr( 'href' ) );
-					}
-					$( '.group' ).hide();
-					$( clicked_group ).fadeIn();
-					evt.preventDefault();
-				});
+                    if ('' != activetab && $(activetab + '-tab').length) {
+                        $(activetab + '-tab').addClass('nav-tab-active');
+                    } else {
+                        $('.nav-tab-wrapper a:first').addClass('nav-tab-active');
+                    }
+                    $('.nav-tab-wrapper a').click(function (evt) {
+                        $('.nav-tab-wrapper a').removeClass('nav-tab-active');
+                        $(this)
+                            .addClass('nav-tab-active')
+                            .blur();
+                        var clicked_group = $(this).attr('href');
+                        if ('undefined' != typeof localStorage) {
+                            localStorage.setItem('activetab', $(this).attr('href'));
+                        }
+                        $('.group').hide();
+                        $(clicked_group).fadeIn();
+                        evt.preventDefault();
+                    });
 
-				$( '.wpsa-browse' ).on( 'click', function( event ) {
-					event.preventDefault();
+                    $('.wpsa-browse').on('click', function (event) {
+                        event.preventDefault();
 
-					var self = $( this );
+                        var self = $(this);
 
-					// Create the media frame.
-					var file_frame = ( wp.media.frames.file_frame = wp.media({
-						title: self.data( 'uploader_title' ),
-						button: {
-							text: self.data( 'uploader_button_text' )
-						},
-						multiple: false
-					}) );
+                        // Create the media frame.
+                        var file_frame = (wp.media.frames.file_frame = wp.media({
+                            title: self.data('uploader_title'),
+                            button: {
+                                text: self.data('uploader_button_text')
+                            },
+                            multiple: false
+                        }));
 
-					file_frame.on( 'select', function() {
-						attachment = file_frame
-							.state()
-							.get( 'selection' )
-							.first()
-							.toJSON();
+                        file_frame.on('select', function () {
+                            attachment = file_frame
+                                .state()
+                                .get('selection')
+                                .first()
+                                .toJSON();
 
-						self
-							.prev( '.wpsa-url' )
-							.val( attachment.url )
-							.change();
-					});
+                            self
+                                .prev('.wpsa-url')
+                                .val(attachment.url)
+                                .change();
+                        });
 
-					// Finally, open the modal
-					file_frame.open();
-				});
+                        // Finally, open the modal
+                        file_frame.open();
+                    });
 
-				$( 'input.wpsa-url' )
-					.on( 'change keyup paste input', function() {
-						var self = $( this );
-						self
-							.next()
-							.parent()
-							.children( '.wpsa-image-preview' )
-							.children( 'img' )
-							.attr( 'src', self.val() );
-					})
-					.change();
-			});
+                    $('input.wpsa-url')
+                        .on('change keyup paste input', function () {
+                            var self = $(this);
+                            self
+                                .next()
+                                .parent()
+                                .children('.wpsa-image-preview')
+                                .children('img')
+                                .attr('src', self.val());
+                        })
+                        .change();
+                });
 
-			</script>
+            </script>
 
-			<style type="text/css">
-				/** WordPress 3.8 Fix **/
-				.form-table th {
-					padding: 20px 10px;
-				}
+            <style type="text/css">
+                /** WordPress 3.8 Fix **/
+                .form-table th {
+                    padding: 20px 10px;
+                }
 
-				#wpbody-content .metabox-holder {
-					padding-top: 5px;
-				}
+                #wpbody-content .metabox-holder {
+                    padding-top: 5px;
+                }
 
-				.wpsa-image-preview img {
-					height: auto;
-					max-width: 70px;
-				}
+                .wpsa-image-preview img {
+                    height: auto;
+                    max-width: 70px;
+                }
 
-				.wpsa-settings-separator {
-					background: #ccc;
-					border: 0;
-					color: #ccc;
-					height: 1px;
-					position: absolute;
-					left: 0;
-					width: 99%;
-				}
-				.group .form-table input.color-picker {
-					max-width: 100px;
-				}
-			</style>
+                .wpsa-settings-separator {
+                    background: #ccc;
+                    border: 0;
+                    color: #ccc;
+                    height: 1px;
+                    position: absolute;
+                    left: 0;
+                    width: 99%;
+                }
+
+                .group .form-table input.color-picker {
+                    max-width: 100px;
+                }
+            </style>
 			<?php
 		}
+
 	} // WP_OSA ended.
 
 endif;

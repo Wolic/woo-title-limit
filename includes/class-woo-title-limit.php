@@ -3,8 +3,8 @@
 /**
  * The file that defines the core plugin class
  *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
+ * A class definition that includes attributes and functions used across both
+ * the public-facing side of the site and the admin area.
  *
  * @link       https://www.dimitri-wolf.de
  * @since      2.0.0
@@ -30,39 +30,41 @@
 class Woo_Title_Limit {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The loader that's responsible for maintaining and registering all hooks
+	 * that power the plugin.
 	 *
+	 * @var      Woo_Title_Limit_Loader $loader Maintains and registers all
+	 *     hooks for the plugin.
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Woo_Title_Limit_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
 	/**
 	 * The unique identifier of this plugin.
 	 *
+	 * @var      string $plugin_name The string used to uniquely identify this
+	 *     plugin.
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
 	/**
 	 * The current version of the plugin.
 	 *
+	 * @var      string $version The current version of the plugin.
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
 
 	/**
 	 * Define the core functionality of the plugin.
 	 *
-	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
-	 * the public-facing side of the site.
+	 * Set the plugin name and the plugin version that can be used throughout
+	 * the plugin. Load the dependencies, define the locale, and set the hooks
+	 * for the admin area and the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
@@ -89,9 +91,11 @@ class Woo_Title_Limit {
 	 * - Woo_Title_Limit_Loader. Orchestrates the hooks of the plugin.
 	 * - Woo_Title_Limit_i18n. Defines internationalization functionality.
 	 * - Woo_Title_Limit_Admin. Defines all hooks for the admin area.
-	 * - Woo_Title_Limit_Public. Defines all hooks for the public side of the site.
+	 * - Woo_Title_Limit_Public. Defines all hooks for the public side of the
+	 * site.
 	 *
-	 * Create an instance of the loader which will be used to register the hooks
+	 * Create an instance of the loader which will be used to register the
+	 * hooks
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -129,8 +133,8 @@ class Woo_Title_Limit {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Woo_Title_Limit_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
+	 * Uses the Woo_Title_Limit_i18n class in order to set the domain and to
+	 * register the hook with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
@@ -157,8 +161,8 @@ class Woo_Title_Limit {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'wtl_admin_notices' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'create_settings_menu',9 );
-		$this->loader->add_action( 'plugin_action_links_woo-title-limit/woo-title-limit.php', $plugin_admin, 'plugin_settings_link',9 );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'create_settings_menu', 9 );
+		$this->loader->add_action( 'plugin_action_links_woo-title-limit/woo-title-limit.php', $plugin_admin, 'plugin_settings_link', 9 );
 
 	}
 
@@ -191,8 +195,8 @@ class Woo_Title_Limit {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -201,8 +205,9 @@ class Woo_Title_Limit {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
+	 * @return    Woo_Title_Limit_Loader    Orchestrates the hooks of the
+	 *     plugin.
 	 * @since     1.0.0
-	 * @return    Woo_Title_Limit_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -211,8 +216,8 @@ class Woo_Title_Limit {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_version() {
 		return $this->version;
