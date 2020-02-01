@@ -158,6 +158,7 @@ class Woo_Title_Limit {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'wtl_admin_notices' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'create_settings_menu',9 );
+		$this->loader->add_action( 'plugin_action_links_woo-title-limit/woo-title-limit.php', $plugin_admin, 'plugin_settings_link',9 );
 
 	}
 

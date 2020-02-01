@@ -311,4 +311,14 @@ class Woo_Title_Limit_Admin {
         }
     }
 
+    /**
+     * @return array
+     */
+    public function plugin_settings_link($links){
+        $links[] = '<a href="' .
+            admin_url( 'options-general.php?page=woo-title-limit' ) .
+            '">' . __('Settings', 'woo-title-limit') . '</a>';
+        return $links;
+    }
+
 }
