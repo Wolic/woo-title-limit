@@ -153,7 +153,7 @@ class Woo_Title_Limit_Public {
 	 */
 	public function shorten_title( $wtl_page, $title ) {
 
-		$general_options = get_option( 'wtl_general' );
+		$general_options = get_option( 'wtl_opt_general' );
 		$wordcutter      = isset( $general_options['wordcutter'] ) ? $general_options['wordcutter'] : 'off';
 		$options         = $this->get_wtl_options( $wtl_page );
 		$dots            = isset( $options['dots'] ) ? $options['dots'] : 'off';
