@@ -132,7 +132,7 @@ class Woo_Title_Limit_Admin {
             // Section: Basic Settings.
             $wtl_opt_obj->add_section(
                 array(
-                    'id' => 'wtl_general',
+                    'id' => 'wtl_opt_general',
                     'title' => __('General', 'woo-title-limit'),
                 )
             );
@@ -174,7 +174,7 @@ class Woo_Title_Limit_Admin {
             );
 
             $wtl_opt_obj->add_field(
-                'wtl_general',
+                'wtl_opt_general',
                 array(
                     'id'   => 'wordcutter',
                     'type' => 'checkbox',
@@ -184,7 +184,7 @@ class Woo_Title_Limit_Admin {
             );
 
             $wtl_opt_obj->add_field(
-                'wtl_general',
+                'wtl_opt_general',
                 array(
                     'id'   => 'auto_widgets',
                     'type' => 'checkbox',
