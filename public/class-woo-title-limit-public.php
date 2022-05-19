@@ -140,6 +140,9 @@ class Woo_Title_Limit_Public {
 			if ( is_home() || is_front_page() ) {
 				return $this->shorten_title( 'home', $title );
 			}
+			if ( is_page() ) {
+				return $this->shorten_title( 'page', $title );
+			}			
 		}
 
 		return $title;
