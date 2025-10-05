@@ -100,6 +100,17 @@ class Woo_Title_Limit_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/woo-title-limit-admin.js', [ 'jquery' ], $this->version, FALSE );
 
 	}
+	/**
+	 * Declare compatibility with WooCommerce HPOS (High-Performance Order Storage)
+	 *
+	 * @since 2.0.4
+	 */
+	public function set_hpos_support_for_wc() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', plugin_dir_path( dirname( __FILE__ ) ) . 'woo-title-limit.php', true );
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', plugin_dir_path( dirname( __FILE__ ) ) . 'woo-title-limit.php', true );
+		}
+	}
 
 	public function wtl_admin_notices() {
 		if ( is_plugin_inactive( 'woocommerce/woocommerce.php' ) ) {

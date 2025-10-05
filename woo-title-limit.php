@@ -16,7 +16,7 @@
  * Plugin Name:       Woo Title Limit
  * Plugin URI:        https://www.dimitri-wolf.de
  * Description:       Allows you to set product title lengths for WooCommerce products.
- * Version:           2.0.3
+ * Version:           2.0.4
  * Author: Dima W.
  * Author URI:        https://www.dimitri-wolf.de
  * License:           GPL-2.0+ License
@@ -24,9 +24,9 @@
  *
  * Text Domain: woo-title-limit
  * Domain Path: /languages
- *
+ * 
+ * WC tested up to: 10.2.2
  * WC requires at least: 3.0
- * WC tested up to: 4.6.1
  */
 
 // If this file is called directly, abort.
@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'WOO_TITLE_LIMIT_VERSION', '2.0.3' );
+define( 'WOO_TITLE_LIMIT_VERSION', '2.0.4' );
 
 /**
  * The code that runs during plugin activation.

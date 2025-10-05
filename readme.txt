@@ -3,8 +3,8 @@ Contributors: DimaW
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X6JSPSAFCXJBW
 Tags: woocommerce, product title, title, length, limit, shop
 Requires at least: 3.0.1
-Tested up to: 5.8.3
-Stable tag: 2.0.3
+Tested up to: 6.8.3
+Stable tag: 2.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ Send me your questions to wtl@dimitri-wolf.de
 5. Woo Title Limit easy to use settings page.
 
 == Changelog ==
+
+= 2.0.4 =
+
+* tested up to WordPress 6.8.3
+* tested up to WooCommerce 10.2.2
 
 = 2.0.3 =
 
