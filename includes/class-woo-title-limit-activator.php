@@ -38,10 +38,12 @@ class Woo_Title_Limit_Activator {
 			$wtl_count_category        = ( isset( $old_options['wtl_count_category'] ) ? $old_options['wtl_count_category'] : 0 );
 			$wtl_count_product         = ( isset( $old_options['wtl_count_product'] ) ? $old_options['wtl_count_product'] : 0 );
 			$wtl_count_home            = ( isset( $old_options['wtl_count_home'] ) ? $old_options['wtl_count_home'] : 0 );
+			$wtl_count_page            = ( isset( $old_options['wtl_count_page'] ) ? $old_options['wtl_count_page'] : 0 );
 			$wtl_checkbox_etc_shop     = ( isset( $old_options['wtl_checkbox_etc_shop'] ) && $old_options['wtl_checkbox_etc_shop'] == '1' ) ? 'on' : 'off';
 			$wtl_checkbox_etc_category = ( isset( $old_options['wtl_checkbox_etc_category'] ) && $old_options['wtl_checkbox_etc_category'] == '1' ) ? 'on' : 'off';
 			$wtl_checkbox_etc_product  = ( isset( $old_options['wtl_checkbox_etc_product'] ) && $old_options['wtl_checkbox_etc_product'] == '1' ) ? 'on' : 'off';
 			$wtl_checkbox_etc_home     = ( isset( $old_options['wtl_checkbox_etc_home'] ) && $old_options['wtl_checkbox_etc_home'] == '1' ) ? 'on' : 'off';
+			$wtl_checkbox_etc_page     = ( isset( $old_options['wtl_checkbox_etc_page'] ) && $old_options['wtl_checkbox_etc_page'] == '1' ) ? 'on' : 'off';
 			$wtl_checkbox_widgets      = ( isset( $old_options['wtl_checkbox_widgets'] ) && $old_options['wtl_checkbox_widgets'] == '1' ) ? 'on' : 'off';
 			$wtl_checkbox_wordcutter   = ( isset( $old_options['wtl_checkbox_wordcutter'] ) && $old_options['wtl_checkbox_wordcutter'] == '1' ) ? 'on' : 'off';
 
@@ -62,6 +64,10 @@ class Woo_Title_Limit_Activator {
 					'count' => $wtl_count_home,
 					'dots'  => $wtl_checkbox_etc_home,
 				],
+				'wtl_opt_page'     => [
+					'count' => $wtl_count_page,
+					'dots'  => $wtl_checkbox_etc_page,
+				],				
 				'wtl_opt_tag'      => [
 					'count' => 0,
 					'dots'  => 'off',

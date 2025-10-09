@@ -182,6 +182,14 @@ class Woo_Title_Limit_Admin {
 					'desc'  => __( 'Influences product titles on the home page.', 'woo-title-limit' ),
 				]
 			);
+			
+			$wtl_opt_obj->add_section(
+				[
+					'id'    => 'wtl_opt_page',
+					'title' => __( 'Pages', 'woo-title-limit' ),
+					'desc'  => __( 'Influences product titles on the pages.', 'woo-title-limit' ),
+				]
+			);			
 
 			$wtl_opt_obj->add_section(
 				[
@@ -296,6 +304,29 @@ class Woo_Title_Limit_Admin {
 			// Field: Checkbox.
 			$wtl_opt_obj->add_field(
 				'wtl_opt_home',
+				[
+					'id'   => 'dots',
+					'type' => 'checkbox',
+					'name' => __( 'Add "..." to the title', 'woo-title-limit' ),
+					'desc' => __( '', 'woo-title-limit' ),
+				]
+			);
+
+			$wtl_opt_obj->add_field(
+				'wtl_opt_page',
+				[
+					'id'                => 'count',
+					'type'              => 'number',
+					'name'              => __( 'Product Title length', 'woo-title-limit' ),
+					'desc'              => __( 'Set the limit for the product titles (amount of maximum characters).', 'woo-title-limit' ),
+					'default'           => 0,
+					'sanitize_callback' => 'intval',
+				]
+			);
+
+			// Field: Checkbox.
+			$wtl_opt_obj->add_field(
+				'wtl_opt_page',
 				[
 					'id'   => 'dots',
 					'type' => 'checkbox',
