@@ -1,4 +1,4 @@
-=== Woo Title Limit ===
+=== Title Limit for WooCommerce ===
 Contributors: DimaW
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X6JSPSAFCXJBW
 Tags: woocommerce, product title, title, length, limit, shop
@@ -29,11 +29,11 @@ Useful for automatically added affiliate products.
 
 1. Upload the plugin directory to the `/wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Settings->Woo Title Limit screen to configure the plugin and set up your title lengths.
+3. Use the Settings->Title Limit for WooCommerce screen to configure the plugin and set up your title lengths.
 
 == Frequently Asked Questions ==
 
-Send me your questions to wtl@dimitri-wolf.de
+Please use the Support Forum of the WordPress Plugin Directory.
 
 == Screenshots ==
 1. WooCommerce frontend without a limit for product titles.
@@ -43,6 +43,10 @@ Send me your questions to wtl@dimitri-wolf.de
 5. Woo Title Limit easy to use settings page.
 
 == Changelog ==
+
+= 2.0.5 =
+
+* Plugin name changed to comply with WordPress guidelines
 
 = 2.0.4 =
 
